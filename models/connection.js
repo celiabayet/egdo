@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 
+require('dotenv').config();
+
 // useNewUrlParser ;)
 var options = {
     connectTimeoutMS: 5000,
@@ -8,7 +10,7 @@ var options = {
 };
 
 // --------------------- BDD -----------------------------------------------------
-mongoose.connect('mongodb+srv://egdo_team:UazBAsZJ2lLbxYXz@cluster0.ifwas.mongodb.net/egdo?retryWrites=true&w=majority',
+mongoose.connect(`mongodb+srv://${process.env.ID_BDD}:${process.env.PASSWORD_BDD}@cluster0.ifwas.mongodb.net/egdo?retryWrites=true&w=majority`,
     options,
     function (err) {
         if (err) {
