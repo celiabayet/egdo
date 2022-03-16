@@ -25,10 +25,10 @@ const Navbar = (props) => {
             to='/'
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
             style={{ textDecoration: 'none' }}
-          // onClick={window.scrollTo(0, 0)}
           >
             <Link sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
               <img
+                // onClick={window.scrollTo(0, 0)}
                 src="./images/general/egdo_logo.png"
                 className="img-fluid"
                 alt="Logo."

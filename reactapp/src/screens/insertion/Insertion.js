@@ -129,9 +129,8 @@ const Insertion = (props) => {
                     <div className='opacity'>
                         <Typography variant='h3'>Prochains événements</Typography>
                         <Grid container justifyContent="center" style={{ paddingBottom: '2rem' }}>
-                            <Grid item xs={12} style={{ margin: '1rem' }}>
+                            <Grid item xs={12} md={5} style={{ margin: '1rem' }}>
                                 <Calendar events={events} setEvents={setEvents} eventsDay={eventsDay} setEventsDay={setEventsDay} />
-                                {eventsDay.length === 0 && <h4 style={{ textAlign: 'center' }}> Aucune activité n'est disponible pour ce jour, merci de sélectionner une autre date</h4>}
                             </Grid>
                             <Grid item xs={12} style={{ margin: '1rem' }}>{eventsDay.length > 0 && <h2 style={{ textAlign: 'center', color: "dark" }}> {eventsDay.length} {eventsDay.length > 1 ? 'Activités disponibles' : 'Activité disponible'}</h2>}</Grid>
                             {eventsData}
