@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { AppBar, Box, Toolbar, Typography, Container, Button, MenuItem, Modal } from '@mui/material';
 
 import { Grid } from '@mui/material';
-import AdminButton from "./AdminButton";
+import AdminButton from "./AdminButtons";
 import EventIcon from '@mui/icons-material/Event';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
@@ -42,7 +42,7 @@ function Admin(props) {
                                     sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                                 >
                                     <img
-                                        src="./images/egdo_logo.png"
+                                        src="./images/general/egdo_logo.png"
                                         className="img-fluid"
                                         alt="Logo."
                                     />

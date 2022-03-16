@@ -3,7 +3,6 @@ import { Carousel } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Grid } from '@mui/material'
 
-
 const CarouselNews = ({ news }) => {
 
   const newsToDisplay = news.map((item, i) => {
@@ -21,8 +20,8 @@ const CarouselNews = ({ news }) => {
   });
 
   return (
-    <Grid container xs={12} style={myStyle.carouselNews}>
-      <Grid item xs={12} md={8} >
+    <Grid container xs={12} my={2} style={myStyle.carouselNews}>
+      <Grid item xs={10} md={8} justifyContent='center'>
         <Carousel controls={false}  >
           {newsToDisplay}
         </Carousel>
@@ -38,7 +37,7 @@ const myStyle = {
     minHeight: '100vh',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
   carouselText: {
     backgroundColor: 'rgb(0,0,0,0.8)',

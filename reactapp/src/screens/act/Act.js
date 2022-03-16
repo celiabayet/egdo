@@ -1,13 +1,13 @@
 import React from 'react';
 import { Grid, Button, Container, Typography } from '@mui/material';
 
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 
 // import './Discover.css'
-import '../stylesheets/App.css'
+import '../../stylesheets/App.css'
 
-const nav = [];
+const nav = ["Contact"];
 
 export default function Act() {
     return (
@@ -53,8 +53,9 @@ export default function Act() {
                     </Container>
                 </div>
             </div>
-
-            <Footer />
+            <div id={nav[0]}>
+                <Footer />
+            </div>
 
         </>
     )

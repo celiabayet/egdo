@@ -1,6 +1,6 @@
 .allHomePage {
     height: 95vh;
-    background-image: url("../../public/images/blue-pencils.jpg");
+    background-image: url("../../public/images/general/blue-pencils.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);

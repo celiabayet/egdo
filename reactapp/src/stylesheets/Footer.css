@@ -1,13 +1,13 @@
 /* Style du gros footer avec Contact */
 .footer-background {
-    background-image: url("../../public/images/blue-pencils.jpg");
+    background-image: url("../../public/images/general/blue-pencils.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .footer-opacity-block {
-    height: 100%;
-    width: 100%;
+    min-height: 82vh;
+    padding-top: 8vh;
     background-color: rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;

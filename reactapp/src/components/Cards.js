@@ -1,16 +1,17 @@
 import React from 'react';
-import {Typography, Button, CardMedia, CardContent, CardActions, Card} from '@mui/material';
+import { Link as LinkRouter } from 'react-router-dom';
+import { Typography, Button, CardMedia, CardContent, CardActions, Card } from '@mui/material';
 
 export default function Cards(props) {
 
-    return(
+    return (
         <Card id={props.cardID}>
             <CardMedia
                 component="img"
                 height="120"
                 image={props.img}
                 alt={props.imgDesc}
-            />          
+            />
             <CardContent className='background-img' style={styles.container}>
                 <Typography variant="h5" component="div">
                     {props.title}
@@ -19,14 +20,14 @@ export default function Cards(props) {
                     {props.content}
                 </Typography>
                 <CardActions>
-                <Button variant="contained" color="primary">{props.button}</Button>
-            </CardActions>
+                    <LinkRouter to="/blog" style={{ textDecoration: "none" }}><Button variant="contained" color="primary">{props.button}</Button></LinkRouter>
+                </CardActions>
             </CardContent>
         </Card>
     )
 }
 const styles = {
     container: {
-        background: `radial-gradient(circle, rgba(250,250,250,0.7) 0%, rgba(250,250,250,0.9) 81%), url("/images/light-blue.jpg")`,
+        background: `radial-gradient(circle, rgba(250,250,250,0.7) 0%, rgba(250,250,250,0.9) 81%), url("/images/general/light-blue.jpg")`,
     }
 };

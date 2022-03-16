@@ -29,7 +29,7 @@
 
 .football-info-container {
    
-    background-image: url('./../../../public/student/imgs/soccer-field.jpg');
+    background-image: url('../../public/images/student/soccer-field.jpg');
     background-size: cover;
     background-position:30%;
     height:60%;
@@ -47,7 +47,7 @@
 }
 
 .taekwondo-info-container {
-    background-image: url('./../../../public/student/imgs/taekwondo.jpg');
+    background-image: url('../../public/images/student/taekwondo.jpg');
     background-size: cover;
     background-position:30%;
     height:60%;
@@ -57,7 +57,7 @@
 }
 
 .bodytae-info-container {
-    background-image: url('./../../../public/student/imgs/taekwondoF.jpg');
+    background-image: url('../../public/images/student/taekwondoF.jpg');
     background-size: cover;
     background-position:30%;
     height:60%;

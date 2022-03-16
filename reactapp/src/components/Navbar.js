@@ -25,13 +25,14 @@ const Navbar = (props) => {
             to='/'
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
             style={{ textDecoration: 'none' }}
+          // onClick={window.scrollTo(0, 0)}
           >
             <Link sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
               <img
-                src="./images/egdo_logo.png"
+                src="./images/general/egdo_logo.png"
                 className="img-fluid"
                 alt="Logo."
-                style={{display: {xs:'none'}}}
+                style={{ display: { xs: 'none' } }}
               />
             </Link>
           </LinkRouter>
@@ -75,6 +76,31 @@ const Navbar = (props) => {
                   </MenuItem>
                 </Link>
               ))}
+              <LinkRouter
+                key='act'
+                to='/blog'
+                underline='none'
+                style={{ textDecoration: 'none' }}
+              //ml={5}
+              >
+                <Link underline='none'>
+                  <MenuItem key="Blog" onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">Blog</Typography>
+                  </MenuItem>
+                </Link>
+              </LinkRouter>
+              <LinkRouter
+                key='act'
+                to='/j-agis'
+                underline='none'
+                style={{ textDecoration: 'none' }}
+                ml={4}>
+                <Link underline='none'>
+                  <MenuItem key="J-agis" onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">J'agis</Typography>
+                  </MenuItem>
+                </Link>
+              </LinkRouter>
             </Menu>
           </Box>
           <Typography
@@ -87,9 +113,11 @@ const Navbar = (props) => {
             <LinkRouter
               to="/"
               ml={2}
-              style={{ textDecoration: 'none' }}>
+              style={{ textDecoration: 'none' }}
+            // onClick={window.scrollTo(0, 0)}
+            >
               <img
-                src="./images/egdo_logo.png"
+                src="./images/general/egdo_logo.png"
                 className="img-fluid"
                 alt="Logo."
               />
@@ -113,8 +141,8 @@ const Navbar = (props) => {
               to='/blog'
               underline='none'
               style={{ textDecoration: 'none' }}
-              //ml={5}
-              >
+            //ml={5}
+            >
               <Link underline='none' mr={6}>
                 Blog
               </Link>

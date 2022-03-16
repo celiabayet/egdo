@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
-import { Grid, Button, Box, Container, Typography , Link} from '@mui/material';
+import { Grid, Button, Box, Container, Typography, Link } from '@mui/material';
 import { Link as LinkRouter } from 'react-router-dom';
 
 import '../../stylesheets/App.css'
 import '../../stylesheets/Buttons.css'
-// import './Discover.css'
 
 import AOS from "aos"
 import "aos/dist/aos.css"
@@ -112,7 +111,7 @@ export default function Home() {
                                 to='/espace-eleve'
                                 variant="body2"
                                 underline='none'
-                                style={{textDecoration:'none'}}
+                                style={{ textDecoration: 'none' }}
                             >
                                 <Button size='large' variant='contained' color='primary' sx={{ minWidth: '200px' }}> Espace Elève</Button>
                             </LinkRouter>
@@ -122,7 +121,7 @@ export default function Home() {
                                 to='/espace-insertion'
                                 variant="body2"
                                 underline='none'
-                                style={{textDecoration:'none'}}
+                                style={{ textDecoration: 'none' }}
                             >
                                 <Button size='large' variant='contained' color='primary' sx={{ minWidth: '200px' }}> Espace Insertion</Button>
                             </LinkRouter>
@@ -132,7 +131,7 @@ export default function Home() {
                                 to='/espace-benevole'
                                 variant="body2"
                                 underline='none'
-                                style={{textDecoration:'none'}}
+                                style={{ textDecoration: 'none' }}
                             >
                                 <Button size='large' variant='contained' color='primary' sx={{ minWidth: '200px' }}> Espace Bénévole</Button>
                             </LinkRouter>
@@ -147,13 +146,13 @@ export default function Home() {
 
 const mystyle = {
     img: {
-        backgroundImage: `url("../images/bgi.jpg")`,
+        backgroundImage: `url("../images/general/bgi.jpg")`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         minHeight: "95vh"
     },
     imgMobile: {
-        backgroundImage: `url("../images/bgi.jpg")`,
+        backgroundImage: `url("../images/general/bgi.jpg")`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         minHeight: "95vh",

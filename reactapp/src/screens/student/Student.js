@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
-import './Student.css';
-import CarouselNews from './assets/CarouselNews';
-import Footer from ".//../../components/Footer";
+import '../../stylesheets/Student.css';
+import CarouselNews from '../../components/CarouselNews';
+import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
-import { Grid, Button } from '@mui/material'
+import { Grid, Button, Typography } from '@mui/material'
 
 // Unique key
 import uuid from 'react-uuid'
 
 // Components
-import CardEvents from './assets/CardEvents'
-import SportCard from './assets/SportCard'
-import Calendar from './assets/Calendar'
-import { StudentTabs } from './assets/Tabs'
+import CardEvents from '../../components/CardEvents'
+import SportCard from '../../components/SportCard'
+import Calendar from '../../components/Calendar'
+import { StudentTabs } from '../../components/Tabs'
 import { EventNoteSharp } from '@mui/icons-material';
 
 const Student = (props) => {
@@ -75,7 +75,7 @@ const Student = (props) => {
       {/* <div className='Student' style={myStyle.studentContainer} > */}
       <div div className='section' id={nav[0]} >
         <div className='opacity'>
-
+          <Typography variant='h3'>Actualités</Typography>
           <CarouselNews
             news={[
               {
@@ -94,6 +94,7 @@ const Student = (props) => {
 
       <div div className='section2' id={nav[1]} >
         <div className='opacity'>
+          <Typography variant='h3' pt={3}>Prochains événements</Typography>
           <Grid container justifyContent="center" style={{ paddingBottom: '2rem' }}>
             <Grid item xs={12} style={{ margin: '1rem' }}>
               <Calendar events={events} setEvents={setEvents} eventsDay={eventsDay} setEventsDay={setEventsDay} />
@@ -145,7 +146,7 @@ const Student = (props) => {
               </div>
               <div className="sports-text">
                 <p style={{ marginBottom: 25 }}>Au sein d'EGDO, on pratique un art martial olympique depuis un quart de siècle ! Le taekwondo est proposé en mixte dans la salle Cap-Dadi du gymnase de la Goutte d’Or.</p>
-                <a href="/student/files/inscription-tkw.pdf" download style={{ textDecoration: 'none', alignSelf: 'center' }}> <Button variant="contained" style={{ backgroundColor: '#003D55', width: '180px', alignSelf: 'center', borderRadius: 15 }}>Je m'inscris</Button></a>
+                <a href="/files/inscription-tkw.pdf" download style={{ textDecoration: 'none', alignSelf: 'center' }}> <Button variant="contained" style={{ backgroundColor: '#003D55', width: '180px', alignSelf: 'center', borderRadius: 15 }}>Je m'inscris</Button></a>
               </div>
             </Grid>
 
@@ -155,7 +156,7 @@ const Student = (props) => {
               </div>
               <div className="sports-text">
                 <p style={{ marginBottom: 25 }}>Le Body Taekwondo féminin est un mélange de fitness et de taekwondo en musique qui développe la coordination, la psychomotricité et la perception du corps dans l'espace.</p>
-                <a href="/student/files/inscription-tkw-f.pdf" download style={{ textDecoration: 'none', alignSelf: 'center' }}> <Button variant="contained" style={{ backgroundColor: '#003D55', width: '180px', alignSelf: 'center', borderRadius: 15 }}>Je m'inscris</Button></a>
+                <a href="/files/inscription-tkw-f.pdf" download style={{ textDecoration: 'none', alignSelf: 'center' }}> <Button variant="contained" style={{ backgroundColor: '#003D55', width: '180px', alignSelf: 'center', borderRadius: 15 }}>Je m'inscris</Button></a>
               </div>
             </Grid>
           </Grid>
@@ -201,7 +202,7 @@ const Student = (props) => {
         </div>
       </div>
 
-      <div id='Contact'>
+      <div id={nav[4]}>
         <Footer />
       </div>
     </>

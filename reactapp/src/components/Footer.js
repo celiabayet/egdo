@@ -16,7 +16,7 @@ import "../stylesheets/Modal.css"
 function Footer(props) {
     // Icone EGDO sur la Map
     let EGDOIcon = L.icon({
-        iconUrl: "../images/egdo-logo.png",
+        iconUrl: "../images/general/egdo-logo.png",
         iconAnchor: [5, 55],
         popupAnchor: [10, -44],
         iconSize: [43, 55],
@@ -70,7 +70,7 @@ function Footer(props) {
         return (<Redirect to='/admin' />);
     } else {
         return (
-            <div>
+            <>
                 {/* Le premier footer avec les infos et la carte */}
                 <div className="footer-background">
                     <div className="footer-opacity-block">
@@ -133,7 +133,7 @@ function Footer(props) {
                     <Grid item xs={12} md={4} className="footer-panel">
                         <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start" }}>
                             <div>
-                                <img src="../images/egdo-logo.png" alt="logo de l'association" className="egdo-logo" />
+                                <img src="../images/general/egdo-logo.png" alt="logo de l'association" className="egdo-logo" />
                             </div>
                             <div className="EGDO-credentials">
                                 <p style={{ fontWeight: 600 }}>Les Enfants de la Goutte d'or</p>
@@ -187,7 +187,7 @@ function Footer(props) {
 
                             <div style={{ display: "flex", justifyContent: "center" }}>
                                 <a href="https://www.facebook.com/egdo75" target="_blank" rel="noreferrer" style={{ marginLeft: 5, marginRight: 5 }}><Facebook /></a>
-                                <a href="https://vimeo.com/egdo" target="_blank" rel="noreferrer" style={{ marginLeft: 5, marginRight: 5 }}><img src="../images/vimeo-logo.png" alt="logo de Vimeo" style={{ width: 50 }} /></a>
+                                <a href="https://vimeo.com/egdo" target="_blank" rel="noreferrer" style={{ marginLeft: 5, marginRight: 5 }}><img src="../images/general/vimeo-logo.png" alt="logo de Vimeo" style={{ width: 50 }} /></a>
                             </div>
 
                         </div>
@@ -223,7 +223,7 @@ function Footer(props) {
                         </div>
                     </Grid>
                 </Grid>
-            </div>
+            </>
         )
     }
 }

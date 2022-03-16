@@ -24,7 +24,7 @@ function Blog(props) {
 
     return (
         <>
-            <Navbar nav={["Catégories", "Contact"]} />
+            <Navbar nav={["Contact"]} />
 
             {/* Section Articles */}
             < div className='section'>

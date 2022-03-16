@@ -2,22 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import '../student/Student.css';
-import './Insertion.css';
-import CarouselNews from '../student/assets/CarouselNews';
-import Footer from ".//../../components/Footer";
+import '../../stylesheets/Student.css';
+import '../../stylesheets/Insertion.css';
+import '../../stylesheets/App.css'
+import CarouselNews from '../../components/CarouselNews';
+import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 
-import { Grid, Button, Typography} from '@mui/material'
+import { Grid, Button, Typography } from '@mui/material'
 
 // Unique key
 import uuid from 'react-uuid'
 
 // Components
-import CardEvents from '../student/assets/CardEvents'
-import SportCard from '../student/assets/SportCard'
-import Calendar from '../student/assets/Calendar'
-import { AdultTabs } from '../student/assets/Tabs'
+import CardEvents from '../../components/CardEvents'
+import SportCard from '../../components/SportCard'
+import Calendar from '../../components/Calendar'
+import { AdultTabs } from '../../components/Tabs'
 
 const Insertion = (props) => {
 
@@ -87,7 +88,7 @@ const Insertion = (props) => {
             content: "Un ensemble d'actions pour ramener les jeunes les plus en difficulté vers un cadre plus sain, via le sport et le lien social"
         },
     ]
-    const nav = ["Evénements", "Sport & Insertion", "Football", "Taekwondo", "Contact"]
+    const nav = ["Actualités", "Evénements", "Sport & Insertion", "Football", "Taekwondo", "Contact"]
 
     const sendArticleToStore = async (title) => {
         const res = await fetch(`/article/send-article-to-store/${title}`);
@@ -107,8 +108,9 @@ const Insertion = (props) => {
                 {/* <div className='Student' 
             // style={myStyle.studentContainer} 
             id="Accueil"> */}
-                <div div className='section'>
+                <div className='section' id={nav[0]}>
                     <div className='opacity'>
+                        <Typography variant='h3'>Actualités</Typography>
                         <CarouselNews news={[
                             {
                                 img: '/images/insertion/jeux-de-l-emploi.jpg',
@@ -123,8 +125,9 @@ const Insertion = (props) => {
                     </div>
                 </div>
 
-                <div div className='section2' id={nav[1]} >
+                <div div className='section2' id={nav[1]}>
                     <div className='opacity'>
+                        <Typography variant='h3'>Prochains événements</Typography>
                         <Grid container justifyContent="center" style={{ paddingBottom: '2rem' }}>
                             <Grid item xs={12} style={{ margin: '1rem' }}>
                                 <Calendar events={events} setEvents={setEvents} eventsDay={eventsDay} setEventsDay={setEventsDay} />
@@ -136,14 +139,14 @@ const Insertion = (props) => {
                     </div>
                 </div>
 
-                <div div className='section'>
+                <div div className='section' id={nav[2]}>
                     <div className='opacity'>
 
-                        <Grid container xs={12} 
-                        minHeight='100vh' justifyContent='center' className='sport-inclusion' 
-                        id="Sport & Insertion">
-                            <Grid item xs={12} mt={5}> 
-                                <Typography variant='h3'>
+                        <Grid container xs={12}
+                            minHeight='100vh' justifyContent='center' className='sport-inclusion'
+                        >
+                            <Grid item xs={12} mt={5}>
+                                <Typography py={4} variant='h3'>
                                     Nos programmes Sport & Insertion
                                 </Typography>
                             </Grid>
@@ -155,9 +158,9 @@ const Insertion = (props) => {
                                         </div>
                                         <div className="adult-sports-text">
                                             <p style={{ marginBottom: 25 }}>{card.content}</p>
-                                            <Button variant="contained" 
-                                            // style={{ backgroundColor: '#003D55', width: '180px', alignSelf: 'center', borderRadius: 15 }} 
-                                            onClick={() => sendArticleToStore(card.title)}>En savoir plus</Button>
+                                            <Button variant="contained"
+                                                // style={{ backgroundColor: '#003D55', width: '180px', alignSelf: 'center', borderRadius: 15 }} 
+                                                onClick={() => sendArticleToStore(card.title)}>En savoir plus</Button>
                                         </div>
                                     </Grid>
                                 )
@@ -166,9 +169,9 @@ const Insertion = (props) => {
                     </div>
                 </div>
 
-                <div div className='section2'>
+                <div div className='section2' id={nav[3]}>
                     <div className='opacity'>
-                        <Grid container xs={12} height='100vh' className='football' id="Football" >
+                        <Grid container xs={12} height='100vh' className='football'>
                             <Grid item xs={11} md={8} className="football-info-container">
                                 <div className="sports-name">
                                     <h1 style={{ color: "white", fontSize: 75, textShadow: "black 2px 3px" }}>Football</h1>
@@ -185,10 +188,46 @@ const Insertion = (props) => {
                 <div div className='section'>
                     <div className='opacity'>
                         <div className='football-info'>
-                            
-                             <Typography variant='h3' pt={3}>Les entraînements</Typography>
+                            <Typography variant='h3' style={{ textAlign: "center", padding: "1.5rem 0 1.5rem 0" }}>Les entraînements</Typography>
+                            <AdultTabs />
+                        </div>
+                    </div>
+                </div>
+
+                <div div className='section2' id={nav[4]}>
+                    <div className='opacity'>
+                        <Grid container xs={12} className='taekwondo'>
+                            <Grid item xs={11} md={5} height='500px' className="taekwondo-info-container" style={{ margin: '2rem' }}>
+                                <div className="sports-name">
+                                    <h1 style={{ color: "#4c83bc", fontSize: 75, textShadow: "white 2px 3px" }}>Taekwondo</h1>
+                                </div>
+                                <div className="sports-text">
+                                    <p style={{ marginBottom: 25 }}>Au sein d'EGDO, on pratique un art martial olympique depuis un quart de siècle ! Le taekwondo est proposé en mixte dans la salle Cap-Dadi du gymnase de la Goutte d’Or.</p>
+                                    <a href="/student/files/inscription-tkw.pdf" download style={{ textDecoration: 'none', alignSelf: 'center' }}> <Button variant="contained" style={{ backgroundColor: '#003D55', width: '180px', alignSelf: 'center', borderRadius: 15 }}>Je m'inscris</Button></a>
+                                </div>
+                            </Grid>
+
+
+                            <Grid item xs={11} md={5} className="bodytae-info-container" height='500px' style={{ margin: '2rem' }} >
+                                <div className="sports-name">
+                                    <h1 style={{ color: "white", fontSize: 75, textShadow: "black 2px 3px" }}>Body Tae Féminin</h1>
+                                </div>
+                                <div className="sports-text">
+                                    <p style={{ marginBottom: 25 }}>Le Body Taekwondo féminin est un mélange de fitness et de taekwondo en musique qui développe la coordination, la psychomotricité et la perception du corps dans l'espace.</p>
+                                    <a href="/student/files/inscription-tkw-f.pdf" download style={{ textDecoration: 'none', alignSelf: 'center' }}> <Button variant="contained" style={{ backgroundColor: '#003D55', width: '180px', alignSelf: 'center', borderRadius: 15 }}>Je m'inscris</Button></a>
+                                </div>
+                            </Grid>
+                        </Grid>
+                    </div>
+                </div>
+
+                <div className='section'>
+                    <div className='opacity'>
+                        <div className='football-info'>
+
+                            <Typography variant='h3' pt={3}>Les entraînements</Typography>
                             <Grid container xs={12} justifyContent="center" >
-                               
+
                                 <SportCard
                                     terrain="Gymnase de la Goutte d'Or"
                                     adress='12 rue de la Goutte d’Or'
@@ -208,14 +247,14 @@ const Insertion = (props) => {
                                     coaches={[]}
                                     sport='tkw'
                                 />
-
                             </Grid>
-                            <Footer />
                         </div>
                     </div >
                 </div >
 
-                {/* </div> */}
+                <div id={nav[5]}>
+                    <Footer />
+                </div>
             </>
         )
     }

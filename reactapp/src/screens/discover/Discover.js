@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link as LinkRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Navbar from '../../components/Navbar';
@@ -75,7 +76,7 @@ function Discover(props) {
                                 </Typography>
                             </Grid>
                             <Grid item>
-                                <Button variant='contained' color='infos'> Blog </Button>
+                                <LinkRouter to="/blog" style={{ textDecoration: "none" }}><Button variant='contained' color='infos'> Blog </Button></LinkRouter>
                             </Grid>
                         </Grid>
 
@@ -95,7 +96,7 @@ function Discover(props) {
             </div >
 
             {/* Section Equipe */}
-            < div className='section' id={nav[3]}>
+            < div className='section' id={nav[2]}>
                 <div className='opacity'>
                     <Container maxWidth="md" >
                         <Grid container sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -111,8 +112,7 @@ function Discover(props) {
                 </div>
             </div >
 
-            <div id={nav[4]}>
-
+            <div id={nav[3]}>
                 <Footer />
             </div>
         </>
