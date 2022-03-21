@@ -65,7 +65,7 @@ const Insertion = (props) => {
             key={uuid()}
             title={title}
             desc={description}
-            img={`${type.replace(/\s/g, '-').replace(/é|è/g, 'e').replace(/à|â/g, "a")}.jpg`}
+            img={`${type.replace(/\s|'/g, '-').replace(/é|è/g, 'e').replace(/à|â/g, "a")}.jpg`}
             date={date}
             maxPeople={maxNumberOfPeople}
         />)
@@ -127,9 +127,9 @@ const Insertion = (props) => {
 
                 <div div className='section2' id={nav[1]}>
                     <div className='opacity'>
-                        <Typography variant='h3'>Prochains événements</Typography>
+                        <Typography variant='h3' pt={3} pb={5}>Prochains événements</Typography>
                         <Grid container justifyContent="center" style={{ paddingBottom: '2rem' }}>
-                            <Grid item xs={12} md={5} style={{ margin: '1rem' }}>
+                            <Grid item xs={10} sm={12} md={4}>
                                 <Calendar events={events} setEvents={setEvents} eventsDay={eventsDay} setEventsDay={setEventsDay} />
                             </Grid>
                             <Grid item xs={12} style={{ margin: '1rem' }}>{eventsDay.length > 0 && <h2 style={{ textAlign: 'center', color: "dark" }}> {eventsDay.length} {eventsDay.length > 1 ? 'Activités disponibles' : 'Activité disponible'}</h2>}</Grid>

@@ -52,7 +52,7 @@ export default function Calendar({ events, setEvents, eventsDay, setEventsDay })
         <>
             <LocalizationProvider dateAdapter={AdapterDateFns} locale={fr} >
                 <StaticDatePicker
-                    orientation="landscape"
+                    orientation="portrait"
                     openTo="day"
                     value={date}
                     shouldDisableDate={nothingHappensOnThisDay}
@@ -60,6 +60,18 @@ export default function Calendar({ events, setEvents, eventsDay, setEventsDay })
                         setDate(newDate);
                     }}
                     renderInput={(params) => <TextField {...params} />}
+                    toolbarTitle="Sélectionnez une date."
+                    sx={{
+                        ".MuiTypography-root": {
+                            marginLeft: "1rem"
+                        },
+                        ".MuiTypography-h4": {
+                            marginLeft: "1rem"
+                        },
+                        ".PrivateDatePickerToolbar-penIcon": {
+                            display: "none"
+                        }
+                    }}
                 />
             </LocalizationProvider>
         </>

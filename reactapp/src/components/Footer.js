@@ -102,10 +102,10 @@ function Footer(props) {
                             {/* Panel de droite du premier footer, avec la map dedans */}
                             <Grid item xs={12} md={6} className="footer-panel">
                                 <div className="footer-panel-content">
-                                    <MapContainer className="map-container" center={[48.887270, 2.354730]} zoom={14}>
+                                    <MapContainer className="map-container" center={[48.887270, 2.354730]} zoom={13}>
                                         <TileLayer
                                             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" className="map-tiles"
                                         />
                                         <Marker icon={EGDOIcon} position={[48.884740, 2.352990]}>
                                             <Popup>
@@ -214,7 +214,7 @@ function Footer(props) {
                                     <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-around", alignItems: "center" }}>
                                         <div className="form-input">
                                             <TextField id="outlined-basic" label="Votre email" variant="outlined" className="input-field" onChange={(e) => setEmail(e.target.value)} value={email} />
-                                            <TextField id="outlined-basic" label="Votre mot de passe" variant="outlined" className="input-field" onChange={(e) => setPassword(e.target.value)} value={password} />
+                                            <TextField id="outlined-basic" label="Votre mot de passe" variant="outlined" className="input-field" type="password" onChange={(e) => setPassword(e.target.value)} value={password} />
                                         </div>
                                         <button className="button-input" onClick={closeAdminModal}>Accéder à l'espace admin</button>
                                     </div>
