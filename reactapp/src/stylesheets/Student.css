@@ -27,8 +27,7 @@
     min-height:100vh;
 }
 
-.football-info-container {
-   
+.football-info-container {   
     background-image: url('../../public/images/student/soccer-field.jpg');
     background-size: cover;
     background-position:30%;

@@ -30,7 +30,7 @@ export default function Volunteer() {
                                 subtitle: "Les ateliers culturels d'EGDO permettent de revisiter les contenus scolaires d’une autre manière"
                             },
                             {
-                                img: '/student/imgs/asterix.avif',
+                                img: '/images/student/asterix.avif',
                                 title: "Sortie au Parc Astérix",
                                 subtitle: "Onze jeunes de l'association EGDO ont eu la chance de passer une journée chez les Gaulois !"
                             }]} />

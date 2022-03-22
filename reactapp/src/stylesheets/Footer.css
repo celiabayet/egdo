@@ -115,6 +115,10 @@
     line-height: 1
 }
 
+/* .map-tiles {
+    filter: brightness(0.7) invert(0.9) contrast(3) hue-rotate(350deg) saturate(0.8) brightness(0.7);
+} */
+
 .egdo-logo {
     width: 70px;
 }
