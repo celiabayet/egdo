@@ -6,7 +6,7 @@ require('dotenv').config();
 var options = {
     connectTimeoutMS: 5000,
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true
 };
 
 // --------------------- BDD -----------------------------------------------------
