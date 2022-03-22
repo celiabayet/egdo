@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 // import { Link as RouterLink } from 'react-router-dom';
 import { HashLink as RouterLink } from 'react-router-hash-link';
 import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Button, MenuItem, Link } from '@mui/material'
@@ -12,12 +12,12 @@ const Navbar = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const pages = [
-    {name: 'Accueil', menu: [], route: '/'},
-    {name: 'Qui sommes-nous ?', menu: [{name:'Nos actions', anchor: 'Actions'}, {name:'Histoire', anchor: 'Histoire'}, {name: "L'équipe", anchor: 'Equipe'}], route: '/'}, 
-    {name: 'Elève', menu: [{name: 'Actualités', anchor: 'Actualites'}, {name: 'Sorties', anchor: 'Sorties'},{name:'Football', anchor: 'Football'}, {name: 'Taekwendo', anchor: 'Taekwendo'}], route: '/espace-eleve'},
-    {name: 'Insertion', menu: [{name: 'Actualités', anchor: 'Actualites'}, {name: 'Evènements', anchor: 'Evenements'},{name:'Sports & Insertion', anchor: 'Programme'},{name:'Football', anchor: 'Football'}, {name: 'Taekwendo', anchor: 'Taekwendo'}], route: '/espace-insertion'},
-    {name: 'Bénévole', menu: [{name: 'Actualités', anchor:'Actualites'}, {name:'Soutien scolaire', anchor:'Soutien'}, {name: 'Sorties', anchor: 'Sorties'}], route: '/espace-benevole'},
-    {name: 'Blog', menu: [], route: '/blog'}];
+    { name: 'Accueil', menu: [], route: '/' },
+    { name: 'Qui sommes-nous ?', menu: [{ name: 'Nos actions', anchor: 'Actions' }, { name: 'Histoire', anchor: 'Histoire' }, { name: "L'équipe", anchor: 'Equipe' }], route: '/' },
+    { name: 'Elève', menu: [{ name: 'Actualités', anchor: 'Actualites' }, { name: 'Sorties', anchor: 'Sorties' }, { name: 'Football', anchor: 'Football' }, { name: 'Taekwendo', anchor: 'Taekwendo' }], route: '/espace-eleve' },
+    { name: 'Insertion', menu: [{ name: 'Actualités', anchor: 'Actualites' }, { name: 'Evènements', anchor: 'Evenements' }, { name: 'Sports & Insertion', anchor: 'Programme' }, { name: 'Football', anchor: 'Football' }, { name: 'Taekwendo', anchor: 'Taekwendo' }], route: '/espace-insertion' },
+    { name: 'Bénévole', menu: [{ name: 'Actualités', anchor: 'Actualites' }, { name: 'Soutien scolaire', anchor: 'Soutien' }, { name: 'Sorties', anchor: 'Sorties' }], route: '/espace-benevole' },
+    { name: 'Blog', menu: [], route: '/blog' }];
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -36,8 +36,6 @@ const Navbar = (props) => {
 
   const LinkRouter = (props) => <Link {...props} component={RouterLink} />;
 
-
-  
   return (
 
     <AppBar position="sticky">
@@ -48,7 +46,6 @@ const Navbar = (props) => {
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
-              // aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
@@ -78,24 +75,24 @@ const Navbar = (props) => {
                 <LinkRouter
                   to={page.route}
                   underline='none'
-                  // sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-                  // style={{ textDecoration: 'none' }}
-                  >
+                // sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+                // style={{ textDecoration: 'none' }}
+                >
                   <MenuItem key={index} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page.name}</Typography>
                   </MenuItem>
                 </LinkRouter>
-                
+
               ))}
               <LinkRouter
                 key='act'
                 to='/j-agis'
                 underline='none'
-                >
+              >
                 {/* <Link underline='none'> */}
-                  <MenuItem key="J-agis" onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">J'agis</Typography>
-                  </MenuItem>
+                <MenuItem key="J-agis" onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">J'agis</Typography>
+                </MenuItem>
                 {/* </Link> */}
               </LinkRouter>
             </Menu>
@@ -104,7 +101,7 @@ const Navbar = (props) => {
             to="/"
             ml={2}
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-            style={{ textDecoration: 'none'}}
+            style={{ textDecoration: 'none' }}
             onClick={window.scrollTo(0, 0)}
           >
             <img
@@ -117,66 +114,67 @@ const Navbar = (props) => {
           {/* Web navbar */}
           <LinkRouter
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-            onClick={window.scrollTo(0, 0)} 
-            >
-              <img
-                onClick={window.scrollTo(0, 0)}
-                src="./images/general/egdo_logo.png"
-                className="img-fluid"
-                alt="Logo."
-                style={{ display: { xs: 'none' } }}
-              />
+            onClick={window.scrollTo(0, 0)}
+          >
+            <img
+              onClick={window.scrollTo(0, 0)}
+              src="./images/general/egdo_logo.png"
+              className="img-fluid"
+              alt="Logo."
+              style={{ display: { xs: 'none' } }}
+            />
           </LinkRouter>
-          <Box sx={{ 
-            flexGrow: 1, 
-            display: { xs: 'none', md: 'flex' }, 
-            justifyContent: 'space-around', 
-            alignItems: 'center' }}
-            >
+          <Box sx={{
+            flexGrow: 1,
+            display: { xs: 'none', md: 'flex' },
+            justifyContent: 'space-around',
+            alignItems: 'center'
+          }}
+          >
             {pages.map((page, index) => {
-              return page.menu.length===0 
-                ? <LinkRouter  
-                    underline='none'
-                    to={page.route}
-                    >
-                    <Button key={index}>
-                      <Typography textAlign="center">{page.name}</Typography>                   
-                    </Button> 
-                  </LinkRouter>              
-                : <> 
-                    <Button 
-                      key={index} 
-                      endIcon={<KeyboardArrowDownIcon />} 
-                      // aria-controls={open ? 'basic-menu' : undefined}
-                      // aria-haspopup="true"
-                      // aria-expanded={open ? 'true' : undefined}
-                      onClick={e => handleClick(index,e)}
-                    >
-                      <Typography textAlign="center">{page.name}</Typography>                   
-                    </Button>
-                    <Menu
-                      anchorEl={anchorEl && anchorEl[index]}
-                      open={Boolean(anchorEl && anchorEl[index])}
-                      onClose={handleClose}
-                      MenuListProps={{
-                        'aria-labelledby': 'basic-button',
-                      }}
+              return page.menu.length === 0
+                ? <LinkRouter
+                  underline='none'
+                  to={page.route}
+                >
+                  <Button key={index}>
+                    <Typography textAlign="center">{page.name}</Typography>
+                  </Button>
+                </LinkRouter>
+                : <>
+                  <Button
+                    key={index}
+                    endIcon={<KeyboardArrowDownIcon />}
+                    // aria-controls={open ? 'basic-menu' : undefined}
+                    // aria-haspopup="true"
+                    // aria-expanded={open ? 'true' : undefined}
+                    onClick={e => handleClick(index, e)}
+                  >
+                    <Typography textAlign="center">{page.name}</Typography>
+                  </Button>
+                  <Menu
+                    anchorEl={anchorEl && anchorEl[index]}
+                    open={Boolean(anchorEl && anchorEl[index])}
+                    onClose={handleClose}
+                    MenuListProps={{
+                      'aria-labelledby': 'basic-button',
+                    }}
+                  >
+                    {page.menu.map(item => (
+                      <LinkRouter
+                        underline='none'
+                        to={`${page.route}#${item.anchor}`}
                       >
-                        {page.menu.map(item => (
-                          <LinkRouter  
-                            underline='none'
-                            to={`${page.route}#${item.anchor}`}
-                            >
-                            <MenuItem key={page.name} onClick={handleCloseNavMenu} className='link-router underline' >
-                                <Typography textAlign="center">{item.name}</Typography>
-                            </MenuItem>
-                          </LinkRouter>
-                        ))}
-                    </Menu>
-                  </>
-                }) 
-              }
-                
+                        <MenuItem key={page.name} onClick={handleCloseNavMenu} className='link-router underline' >
+                          <Typography textAlign="center">{item.name}</Typography>
+                        </MenuItem>
+                      </LinkRouter>
+                    ))}
+                  </Menu>
+                </>
+            })
+            }
+
             <LinkRouter
               key='act'
               to='/j-agis'
