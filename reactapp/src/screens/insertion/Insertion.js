@@ -88,7 +88,7 @@ const Insertion = (props) => {
             content: "Un ensemble d'actions pour ramener les jeunes les plus en difficulté vers un cadre plus sain, via le sport et le lien social"
         },
     ]
-    const nav = ["Actualités", "Evénements", "Sport & Insertion", "Football", "Taekwondo", "Contact"]
+    const nav = ["Actualites", "Evenements", "Programme", "Football", "Taekwondo", "Contact"]
 
     const sendArticleToStore = async (title) => {
         const res = await fetch(`/article/send-article-to-store/${title}`);
@@ -127,7 +127,9 @@ const Insertion = (props) => {
 
                 <div div className='section2' id={nav[1]}>
                     <div className='opacity'>
-                        <Typography variant='h3'>Prochains événements</Typography>
+                        <Grid container display='flex' justifyContent='center' py={4}>
+                            <Typography variant='h3'>Prochains événements</Typography>
+                        </Grid>
                         <Grid container justifyContent="center" style={{ paddingBottom: '2rem' }}>
                             <Grid item xs={12} md={5} style={{ margin: '1rem' }}>
                                 <Calendar events={events} setEvents={setEvents} eventsDay={eventsDay} setEventsDay={setEventsDay} />

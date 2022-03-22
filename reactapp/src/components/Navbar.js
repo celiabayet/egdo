@@ -1,11 +1,23 @@
-import * as React from 'react';
-import { Link as LinkRouter } from 'react-router-dom';
-import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem, Link } from '@mui/material'
+import React, {useState} from 'react';
+// import { Link as RouterLink } from 'react-router-dom';
+import { HashLink as RouterLink } from 'react-router-hash-link';
+import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Button, MenuItem, Link } from '@mui/material'
 
 import MenuIcon from '@mui/icons-material/Menu';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import '../stylesheets/App.css';
 
 const Navbar = (props) => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const pages = [
+    {name: 'Accueil', menu: [], route: '/'},
+    {name: 'Qui sommes-nous ?', menu: [{name:'Nos actions', anchor: 'Actions'}, {name:'Histoire', anchor: 'Histoire'}, {name: "L'équipe", anchor: 'Equipe'}], route: '/'}, 
+    {name: 'Elève', menu: [{name: 'Actualités', anchor: 'Actualites'}, {name: 'Sorties', anchor: 'Sorties'},{name:'Football', anchor: 'Football'}, {name: 'Taekwendo', anchor: 'Taekwendo'}], route: '/espace-eleve'},
+    {name: 'Insertion', menu: [{name: 'Actualités', anchor: 'Actualites'}, {name: 'Evènements', anchor: 'Evenements'},{name:'Sports & Insertion', anchor: 'Programme'},{name:'Football', anchor: 'Football'}, {name: 'Taekwendo', anchor: 'Taekwendo'}], route: '/espace-insertion'},
+    {name: 'Bénévole', menu: [{name: 'Actualités', anchor:'Actualites'}, {name:'Soutien scolaire', anchor:'Soutien'}, {name: 'Sorties', anchor: 'Sorties'}], route: '/espace-benevole'},
+    {name: 'Blog', menu: [], route: '/blog'}];
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -15,32 +27,28 @@ const Navbar = (props) => {
     setAnchorElNav(null);
   };
 
-  const pages = props.nav;
+  const handleClick = (index, event) => {
+    setAnchorEl({ [index]: event.currentTarget });
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
+  const LinkRouter = (props) => <Link {...props} component={RouterLink} />;
+
+
+  
   return (
+
     <AppBar position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <LinkRouter
-            to='/'
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-            style={{ textDecoration: 'none' }}
-          >
-            <Link sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
-              <img
-                // onClick={window.scrollTo(0, 0)}
-                src="./images/general/egdo_logo.png"
-                className="img-fluid"
-                alt="Logo."
-                style={{ display: { xs: 'none' } }}
-              />
-            </Link>
-          </LinkRouter>
 
+          {/* Mobile navbar */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
-              aria-label="account of current user"
+              // aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
@@ -66,87 +74,109 @@ const Navbar = (props) => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <Link
-                  href={`#${page}`}
-                >
-
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
+              {pages.map((page, index) => (
+                <LinkRouter
+                  to={page.route}
+                  underline='none'
+                  // sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+                  // style={{ textDecoration: 'none' }}
+                  >
+                  <MenuItem key={index} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page.name}</Typography>
                   </MenuItem>
-                </Link>
+                </LinkRouter>
+                
               ))}
-              <LinkRouter
-                key='act'
-                to='/blog'
-                underline='none'
-                style={{ textDecoration: 'none' }}
-              //ml={5}
-              >
-                <Link underline='none'>
-                  <MenuItem key="Blog" onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">Blog</Typography>
-                  </MenuItem>
-                </Link>
-              </LinkRouter>
               <LinkRouter
                 key='act'
                 to='/j-agis'
                 underline='none'
-                style={{ textDecoration: 'none' }}
-                ml={4}>
-                <Link underline='none'>
+                >
+                {/* <Link underline='none'> */}
                   <MenuItem key="J-agis" onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">J'agis</Typography>
                   </MenuItem>
-                </Link>
+                {/* </Link> */}
               </LinkRouter>
             </Menu>
           </Box>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
+          <LinkRouter
+            to="/"
+            ml={2}
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-            mr={7}
+            style={{ textDecoration: 'none'}}
+            onClick={window.scrollTo(0, 0)}
           >
-            <LinkRouter
-              to="/"
-              ml={2}
-              style={{ textDecoration: 'none' }}
-            // onClick={window.scrollTo(0, 0)}
+            <img
+              src="./images/general/egdo_logo.png"
+              className="img-fluid"
+              alt="Logo."
+            />
+          </LinkRouter>
+
+          {/* Web navbar */}
+          <LinkRouter
+            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+            onClick={window.scrollTo(0, 0)} 
             >
               <img
+                onClick={window.scrollTo(0, 0)}
                 src="./images/general/egdo_logo.png"
                 className="img-fluid"
                 alt="Logo."
+                style={{ display: { xs: 'none' } }}
               />
-            </LinkRouter>
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center', alignItems: 'center' }} >
-            {pages.map((page) => (
-              <Link
-                href={`#${page}`}
-                key={page}
-                underline='none'
-                onClick={handleCloseNavMenu}
-                mr={8}
-                className='underline'
-              >
-                {page}
-              </Link>
-            ))}
-            <LinkRouter
-              key='act'
-              to='/blog'
-              underline='none'
-              style={{ textDecoration: 'none' }}
-            //ml={5}
+          </LinkRouter>
+          <Box sx={{ 
+            flexGrow: 1, 
+            display: { xs: 'none', md: 'flex' }, 
+            justifyContent: 'space-around', 
+            alignItems: 'center' }}
             >
-              <Link underline='none' mr={6}>
-                Blog
-              </Link>
-            </LinkRouter>
+            {pages.map((page, index) => {
+              return page.menu.length===0 
+                ? <LinkRouter  
+                    underline='none'
+                    to={page.route}
+                    >
+                    <Button key={index}>
+                      <Typography textAlign="center">{page.name}</Typography>                   
+                    </Button> 
+                  </LinkRouter>              
+                : <> 
+                    <Button 
+                      key={index} 
+                      endIcon={<KeyboardArrowDownIcon />} 
+                      // aria-controls={open ? 'basic-menu' : undefined}
+                      // aria-haspopup="true"
+                      // aria-expanded={open ? 'true' : undefined}
+                      onClick={e => handleClick(index,e)}
+                    >
+                      <Typography textAlign="center">{page.name}</Typography>                   
+                    </Button>
+                    <Menu
+                      anchorEl={anchorEl && anchorEl[index]}
+                      open={Boolean(anchorEl && anchorEl[index])}
+                      onClose={handleClose}
+                      MenuListProps={{
+                        'aria-labelledby': 'basic-button',
+                      }}
+                      >
+                        {page.menu.map(item => (
+                          <LinkRouter  
+                            underline='none'
+                            to={`${page.route}#${item.anchor}`}
+                            >
+                            <MenuItem key={page.name} onClick={handleCloseNavMenu} className='link-router underline' >
+                                <Typography textAlign="center">{item.name}</Typography>
+                            </MenuItem>
+                          </LinkRouter>
+                        ))}
+                    </Menu>
+                  </>
+                }) 
+              }
+                
             <LinkRouter
               key='act'
               to='/j-agis'

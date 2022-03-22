@@ -28,6 +28,6 @@ export default function Cards(props) {
 }
 const styles = {
     container: {
-        background: `radial-gradient(circle, rgba(250,250,250,0.7) 0%, rgba(250,250,250,0.9) 81%), url("/images/general/light-blue.jpg")`,
+        background: `radial-gradient(circle, rgba(250,250,250,0.95) 0%, rgba(250,250,250,0.9) 81%), url("/images/general/light-blue.jpg")`,
     }
 };

@@ -20,7 +20,7 @@ const CarouselNews = ({ news }) => {
   });
 
   return (
-    <Grid container xs={12} my={2} style={myStyle.carouselNews}>
+    <Grid container xs={12} style={myStyle.carouselNews}>
       <Grid item xs={10} md={8} justifyContent='center'>
         <Carousel controls={false}  >
           {newsToDisplay}

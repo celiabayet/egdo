@@ -14,12 +14,10 @@ import '../../stylesheets/App.css'
 
 import { Container, Grid, Typography, Button } from '@mui/material';
 
-// const nav = ["Accueil", "Qui-sommes-nous?", "Histoire", "Equipe", "Blog"];
-
 function Discover(props) {
-    console.log(props.admin.token)
+    // console.log(props.admin.token)
 
-    const nav = ["Qui-sommes-nous?", "Histoire", "Equipe", "Contact"];
+    const nav = ["Actions", "Histoire", "Equipe"];
     const cardList = [
         {
             id: "scolarite", img: "../images/discover/scolarite.png", imgDesc: "accompagnement-scolarité",
@@ -44,7 +42,7 @@ function Discover(props) {
     return (
         <>
             {/* Navbar */}
-            < Navbar nav={nav} />
+            < Navbar/>
 
             {/* Home page */}
             < div  >

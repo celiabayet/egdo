@@ -67,7 +67,7 @@ const Student = (props) => {
     />)
   })
 
-  let nav = ["Actualités", "Sorties", "Football", "Taekwondo", "Contact"];
+  let nav = ["Actualites", "Sorties", "Football", "Taekwondo", "Contact"];
 
   return (
     <>

@@ -39,8 +39,8 @@ a:link {
 }
 
 .opacity {
-  padding-top: 8vh;
-  background-color: rgb(250, 250, 250, 0.5);
+  /* padding-top: 8vh; */
+  background-color: rgb(250, 250, 250, 0.7);
   min-height: 100vh;
 }
 
@@ -52,6 +52,15 @@ a:link {
   border-radius: 20px;
   height: 70%;
   width: auto
+}
+
+.link-router {
+  display: block;
+  /* margin: 2px 0 2px 0; */
+}
+
+.link-router:hover {
+  color: #FEE271;
 }
 
 .underline {
