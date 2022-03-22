@@ -17,7 +17,8 @@ const Navbar = (props) => {
     { name: 'Elève', menu: [{ name: 'Actualités', anchor: 'Actualites' }, { name: 'Sorties', anchor: 'Sorties' }, { name: 'Football', anchor: 'Football' }, { name: 'Taekwendo', anchor: 'Taekwendo' }], route: '/espace-eleve' },
     { name: 'Insertion', menu: [{ name: 'Actualités', anchor: 'Actualites' }, { name: 'Evènements', anchor: 'Evenements' }, { name: 'Sports & Insertion', anchor: 'Programme' }, { name: 'Football', anchor: 'Football' }, { name: 'Taekwendo', anchor: 'Taekwendo' }], route: '/espace-insertion' },
     { name: 'Bénévole', menu: [{ name: 'Actualités', anchor: 'Actualites' }, { name: 'Soutien scolaire', anchor: 'Soutien' }, { name: 'Sorties', anchor: 'Sorties' }], route: '/espace-benevole' },
-    { name: 'Blog', menu: [], route: '/blog' }];
+    { name: 'Blog', menu: [], route: '/blog' }
+  ];
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -89,11 +90,9 @@ const Navbar = (props) => {
                 to='/j-agis'
                 underline='none'
               >
-                {/* <Link underline='none'> */}
                 <MenuItem key="J-agis" onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">J'agis</Typography>
                 </MenuItem>
-                {/* </Link> */}
               </LinkRouter>
             </Menu>
           </Box>
@@ -102,7 +101,6 @@ const Navbar = (props) => {
             ml={2}
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
             style={{ textDecoration: 'none' }}
-            onClick={window.scrollTo(0, 0)}
           >
             <img
               src="./images/general/egdo_logo.png"
@@ -114,10 +112,10 @@ const Navbar = (props) => {
           {/* Web navbar */}
           <LinkRouter
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-            onClick={window.scrollTo(0, 0)}
+          // onClick={window.scrollTo(0, 0)} 
           >
             <img
-              onClick={window.scrollTo(0, 0)}
+              // onClick={window.scrollTo(0, 0)}
               src="./images/general/egdo_logo.png"
               className="img-fluid"
               alt="Logo."

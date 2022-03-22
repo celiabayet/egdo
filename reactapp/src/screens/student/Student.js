@@ -75,7 +75,10 @@ const Student = (props) => {
       {/* <div className='Student' style={myStyle.studentContainer} > */}
       <div div className='section' id={nav[0]} >
         <div className='opacity'>
-          <Typography variant='h3'>Actualités</Typography>
+          <Grid container justifyContent='center' py={4}>
+            <Typography variant='h3'>Actualités</Typography>
+          </Grid>
+          
           <CarouselNews
             news={[
               {
