@@ -147,6 +147,9 @@ const Navbar = (props) => {
                   <Button
                     key={index}
                     endIcon={<KeyboardArrowDownIcon />}
+                    // aria-controls={open ? 'basic-menu' : undefined}
+                    // aria-haspopup="true"
+                    // aria-expanded={open ? 'true' : undefined}
                     onClick={e => handleClick(index, e)}
                   >
                     <Typography textAlign="center">{page.name}</Typography>
@@ -159,15 +162,17 @@ const Navbar = (props) => {
                       'aria-labelledby': 'basic-button',
                     }}
                   >
-                    {page.map(item => {
-                      return (<LinkRouter
-                        underline='none'
-                        to={page.route}
-                      >
-                        <MenuItem key={page.name} onClick={handleCloseNavMenu} className='link-router underline' >
-                          <Typography textAlign="center">{item.name}</Typography>
-                        </MenuItem>
-                      </LinkRouter>)
+                    {page.menu.map(item => {
+                      return (
+                        <LinkRouter
+                          underline='none'
+                          to={`${page.route}#${item.anchor}`}
+                        >
+                          <MenuItem key={page.name} onClick={handleCloseNavMenu} className='link-router underline' >
+                            <Typography textAlign="center">{item.name}</Typography>
+                          </MenuItem>
+                        </LinkRouter>
+                      )
                     })}
                   </Menu>
                 </>
