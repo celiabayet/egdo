@@ -4,7 +4,6 @@ var request = require('sync-request');
 
 var volunteerModel = require('../models/volunteers')
 
-
 // Fill database with calendar days with groups and times
 router.get('/', async function (req, res, net) {
     let date = new Date();
@@ -14,8 +13,8 @@ router.get('/', async function (req, res, net) {
 
     var requete = request('GET', `https://data.education.gouv.fr/api/records/1.0/search/?dataset=fr-en-calendrier-scolaire&q=&facet=start_date&facet=location&refine.location=Paris&refine.start_date=${year}`);
     var result = JSON.parse(requete.body);
- 
-    let holidays =[];
+
+    let holidays = [];
     result.records.map(holiday => {
         let start = new Date(holiday.fields.start_date);
         let end = new Date(holiday.fields.end_date)
@@ -25,7 +24,7 @@ router.get('/', async function (req, res, net) {
         }
     })
     holidays = holidays.map(day => day.toString())
-    const start = new Date(2022 , 02, 1);
+    const start = new Date(2022, 02, 1);
     const end = new Date(2022, 02, 31);
     // const start = new Date(year ,month==0 ? 11 :  month, 1);
     // const end = new Date(year, month==11 ? 0 : month+2, 1);
@@ -35,19 +34,19 @@ router.get('/', async function (req, res, net) {
     // console.log(date.toUTCString())
     let calendar = [];
     for (var d = start; d <= end; d.setDate(d.getDate() + 1)) {
-            calendar.push(new Date(d));
-        }
+        calendar.push(new Date(d));
+    }
     calendar = calendar.map(day => day.toString())
-    
+
     let benevoleCalendar = calendar.filter(day => !holidays.includes(day))
 
-    for (let day of benevoleCalendar){
+    for (let day of benevoleCalendar) {
         let d = new Date(day);
-        if (d.getDay()===1||d.getDay()===2||d.getDay()===4||d.getDay()===5){
+        if (d.getDay() === 1 || d.getDay() === 2 || d.getDay() === 4 || d.getDay() === 5) {
             const data = await volunteerModel.findOne({
                 date: d
             })
-            if (data==null) {
+            if (data == null) {
                 let newVolunteer = new volunteerModel({
                     date: d,
                     time: "16h-18h",
@@ -55,13 +54,13 @@ router.get('/', async function (req, res, net) {
                 })
                 let saveVolunteer = await newVolunteer.save()
             }
-        }  
-        if (d.getDay()===2||d.getDay()===4){
+        }
+        if (d.getDay() === 2 || d.getDay() === 4) {
             const data = await volunteerModel.findOne({
                 date: d,
-                time : "18h30-20h"
+                time: "18h30-20h"
             })
-            if (data==null) {
+            if (data == null) {
                 let newVolunteer = new volunteerModel({
                     date: d,
                     time: "18h30-20h",
@@ -69,14 +68,14 @@ router.get('/', async function (req, res, net) {
                 })
                 let saveVolunteer = await newVolunteer.save()
             }
-        } 
-        if (d.getDay()===2||d.getDay()===4){
+        }
+        if (d.getDay() === 2 || d.getDay() === 4) {
             const data = await volunteerModel.findOne({
                 date: d,
                 // time : "18h30-20h",
                 group: 'Lycée'
             })
-            if (data==null) {
+            if (data == null) {
                 let newVolunteer = new volunteerModel({
                     date: d,
                     time: "18h30-20h",
@@ -84,14 +83,14 @@ router.get('/', async function (req, res, net) {
                 })
                 let saveVolunteer = await newVolunteer.save()
             }
-            
+
         }
-        if (d.getDay()===1||d.getDay()===3){
+        if (d.getDay() === 1 || d.getDay() === 3) {
             const data = await volunteerModel.findOne({
                 date: d,
                 group: '5ème à 3ème'
             })
-            if (data==null) {
+            if (data == null) {
                 let newVolunteer = new volunteerModel({
                     date: d,
                     time: "18h30-20h",
@@ -102,23 +101,18 @@ router.get('/', async function (req, res, net) {
         }
     }
     const calendarBenevole = await volunteerModel.find()
-    
-    res.json({calendarBenevole});
-})
 
+    res.json({ calendarBenevole });
+})
 
 // Update DataBase with volunteers
 router.post('/add-volunteer', async function (req, res, next) {
-  var error = [];
-  var result = "Il ne s'est rien passé";
-  var saveVolunteer = null;
-    
-    for (let date of req.body.date){
+    for (let date of req.body.date) {
         console.log(new Date(date))
-         
+
         await volunteerModel.updateOne(
-        { date: new Date(date), group: req.body.group},
-        { $push: {users: {name: req.body.name, firstName:req.body.firstName, email:req.body.email}}}
+            { date: new Date(date), group: req.body.group },
+            { $push: { users: { name: req.body.name, firstName: req.body.firstName, email: req.body.email } } }
         );
     }
     

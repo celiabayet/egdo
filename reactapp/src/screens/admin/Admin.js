@@ -81,20 +81,19 @@ function Admin(props) {
                             <Grid item xs={12} md={4} className="home-panel">
                                 <h2><LibraryBooksIcon style={{ fontSize: 50 }} /> Blog</h2>
                                 <AdminButton title="Ajouter un article" />
-                                <AdminButton title="Modifier un article" />
+                                {/* <AdminButton title="Modifier un article" /> */}
                                 <AdminButton title="Supprimer un article" />
                             </Grid>
                             <Grid item xs={12} md={4} className="home-panel">
                                 <h2><EventIcon style={{ fontSize: 50 }} /> Agenda</h2>
                                 <AdminButton title="Ajouter un événement" />
-                                <AdminButton title="Modifier un événement" />
+                                {/* <AdminButton title="Modifier un événement" /> */}
                                 <AdminButton title="Supprimer un événement" />
                             </Grid>
                             <Grid item xs={12} md={4} className="home-panel">
                                 <h2><MoreHorizIcon style={{ fontSize: 50 }} /> Autre</h2>
                                 <AdminButton title="Ajouter un administrateur" />
                                 <AdminButton title="Contacter un développeur" />
-                                <AdminButton title="??" />
                             </Grid>
                         </Grid>
                     </div>

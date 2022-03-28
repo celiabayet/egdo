@@ -86,3 +86,26 @@
 .contact-link:hover {
     color: #71061b
 }
+
+.back-to-top {
+    cursor: pointer;
+    position: sticky;
+    top: 90%;
+    left: 90%;
+    background: white;
+    text-align: center;
+    padding: 10px 20px 10px 20px;
+    border: 2px solid black !important;
+    border-radius: 50px;
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
+    z-index: 10;
+    text-decoration: none !important;
+}
+
+.back-to-top:hover {
+    background: black;
+    color: white;
+    border: 2px solid white;
+}
