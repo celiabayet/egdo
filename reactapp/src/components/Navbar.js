@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 // import { Link as RouterLink } from 'react-router-dom';
 import { HashLink as RouterLink } from 'react-router-hash-link';
 import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Button, MenuItem, Link } from '@mui/material'
@@ -13,7 +13,7 @@ const Navbar = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const history = useHistory()
-  useEffect( ()=> {
+  useEffect(() => {
     console.log(history.location)
   }, [history])
 
@@ -82,7 +82,7 @@ const Navbar = (props) => {
                 <LinkRouter
                   to={page.route}
                   underline='none'
-                  >
+                >
                   <MenuItem key={index} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page.name}</Typography>
                   </MenuItem>
@@ -104,7 +104,7 @@ const Navbar = (props) => {
             to="/"
             ml={2}
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-            style={{ textDecoration: 'none'}}
+            style={{ textDecoration: 'none' }}
           >
             <img
               src="./images/general/egdo_logo.png"
@@ -117,14 +117,14 @@ const Navbar = (props) => {
           {/* Web navbar */}
           <LinkRouter
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-            >
-              <img
-                onClick={()=> window.scrollTo(0, 0)}
-                src="./images/general/egdo_logo.png"
-                className="img-fluid"
-                alt="Logo"
-                style={{ display: { xs: 'none' } }}
-              />
+          >
+            <img
+              onClick={() => window.scrollTo(0, 0)}
+              src="./images/general/egdo_logo.png"
+              className="img-fluid"
+              alt="Logo"
+              style={{ display: { xs: 'none' } }}
+            />
           </LinkRouter>
           <Box sx={{
             flexGrow: 1,
@@ -134,40 +134,40 @@ const Navbar = (props) => {
           }}
           >
             {pages.map((page, index) => {
-              return page.menu.length===0 
-                ? <LinkRouter  
-                    underline='none'
-                    to={page.route}
+              return page.menu.length === 0
+                ? <LinkRouter
+                  underline='none'
+                  to={page.route}
+                >
+                  <Button key={index}>
+                    <Typography textAlign="center">{page.name}</Typography>
+                  </Button>
+                </LinkRouter>
+                : <>
+                  <Button
+                    key={index}
+                    endIcon={<KeyboardArrowDownIcon />}
+                    onClick={e => handleClick(index, e)}
+                  >
+                    <Typography textAlign="center">{page.name}</Typography>
+                  </Button>
+                  <Menu
+                    anchorEl={anchorEl && anchorEl[index]}
+                    open={Boolean(anchorEl && anchorEl[index])}
+                    onClose={handleClose}
+                    MenuListProps={{
+                      'aria-labelledby': 'basic-button',
+                    }}
+                  >
+                    <LinkRouter
+                      underline='none'
+                      to={page.route}
                     >
-                    <Button key={index}>
-                      <Typography textAlign="center">{page.name}</Typography>                   
-                    </Button> 
-                  </LinkRouter>              
-                : <> 
-                    <Button 
-                      key={index} 
-                      endIcon={<KeyboardArrowDownIcon />} 
-                      onClick={e => handleClick(index,e)}
-                    >
-                      <Typography textAlign="center">{page.name}</Typography>                   
-                    </Button>
-                    <Menu
-                      anchorEl={anchorEl && anchorEl[index]}
-                      open={Boolean(anchorEl && anchorEl[index])}
-                      onClose={handleClose}
-                      MenuListProps={{
-                        'aria-labelledby': 'basic-button',
-                      }}
-                      >
-                      <LinkRouter  
-                    underline='none'
-                    to={page.route}
-                    >
-                        <MenuItem key={page.name} onClick={handleCloseNavMenu} className='link-router underline' >
-                          <Typography textAlign="center">{item.name}</Typography>
-                        </MenuItem>
-                      </LinkRouter>
-                    
+                      <MenuItem key={page.name} onClick={handleCloseNavMenu} className='link-router underline' >
+                        <Typography textAlign="center">{page.name}</Typography>
+                      </MenuItem>
+                    </LinkRouter>
+
                   </Menu>
                 </>
             })
