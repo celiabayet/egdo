@@ -4,9 +4,6 @@ import { connect } from 'react-redux';
 
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import BackToTop from '../../components/BackToTop';
-
-// //import theme from "../../components/Theme";
 
 import Action from './Action';
 import History from './History';
