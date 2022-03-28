@@ -125,38 +125,7 @@ router.post('/add-volunteer', async function (req, res, next) {
   const data = await volunteerModel.find()
  console.log(data[0].date)
 
-//   if (data != null) {
-//     error.push('Un article portant ce titre est déjà présent.')
-//   }
-
-//   if (req.body.title == ''
-//     || req.body.img == ''
-//     || req.body.content == ''
-//     || req.body.author == ''
-//     || req.body.category == ''
-//   ) {
-//     error.push('champs vides')
-//   }
-
-//   if (error.length == 0) {
-//     var newArticle = new articleModel({
-//       title: req.body.title,
-//       content: req.body.content,
-//       date: new Date(),
-//       img: req.body.img,
-//       author: req.body.author,
-//       category: req.body.category,
-//       isNews: false
-//     })
-
-//     saveArticle = await newArticle.save()
-
-//     if (saveArticle) {
-//       result = "Félicitations, l'article est ajouté !"
-//     }
-//   }
-
-  res.json({ result, error })
+  res.json({ result })
 })
 
 module.exports = router
