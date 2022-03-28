@@ -159,15 +159,16 @@ const Navbar = (props) => {
                       'aria-labelledby': 'basic-button',
                     }}
                   >
-                    <LinkRouter
-                      underline='none'
-                      to={page.route}
-                    >
-                      <MenuItem key={page.name} onClick={handleCloseNavMenu} className='link-router underline' >
-                        <Typography textAlign="center">{page.name}</Typography>
-                      </MenuItem>
-                    </LinkRouter>
-
+                    {page.map(item => {
+                      return (<LinkRouter
+                        underline='none'
+                        to={page.route}
+                      >
+                        <MenuItem key={page.name} onClick={handleCloseNavMenu} className='link-router underline' >
+                          <Typography textAlign="center">{item.name}</Typography>
+                        </MenuItem>
+                      </LinkRouter>)
+                    })}
                   </Menu>
                 </>
             })
