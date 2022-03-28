@@ -59,9 +59,15 @@ router.get('/see-events/:audience', async function (req, res, next) {
 })
 
 router.post('/remove-event/', async function (req, res, next) {
+  let result;
   await eventModel.deleteOne({ title: req.body.title, date: req.body.date })
-  eventList = await eventModel.find();
-  res.json(eventList)
+  const event = await eventModel.findOne({ title: req.body.title, date: req.body.date });
+  if (event != null) {
+    result = "Il semble que la suppression n'ait pas fonctionné."
+  } else {
+    result = "Félicitations ! L'événement a bien été supprimé."
+  }
+  res.json(result)
 });
 
 router.post('/add-participant', async function (req, res, next) {
@@ -86,10 +92,10 @@ router.post('/add-participant', async function (req, res, next) {
     }
 
     else if (findEvent.maxNumberOfPeople === 0) {
-      error.push("Desolé, le nombre maximum de participants pour cette activité a été atteint !")
+      error.push("Désolé, le nombre maximum de participants pour cette activité a été atteint !")
     }
 
-    else if (findEvent.maxNumberOfPeople > 0 && findEvent.maxNumberOfPeople <= findEvent.maxNumberOfPeople) {
+    else if (findEvent.maxNumberOfPeople > 0) {
       findEvent.maxNumberOfPeople--
       findEvent.users.push({
         name: req.body.name,

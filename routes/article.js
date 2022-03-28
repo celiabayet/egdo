@@ -58,9 +58,15 @@ router.get('/send-article-to-store/:title', async function (req, res, next) {
 })
 
 router.delete('/remove-article/:title', async function (req, res, next) {
-  await articleModel.deleteOne({ title: req.params.title })
-  articleList = await articleModel.find();
-  res.json(articleList)
+  let result;
+  await articleModel.deleteOne({ title: req.params.title });
+  const article = await articleModel.findOne({ title: req.params.title });
+  if (article != null) {
+    result = "Il semble que la suppression n'ait pas fonctionné."
+  } else {
+    result = "Félicitations ! L'article a bien été supprimé."
+  }
+  res.json(result)
 });
 
 module.exports = router;

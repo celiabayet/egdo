@@ -5,7 +5,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 // Routes
-var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
 var eventRouter = require('./routes/event');
 var articleRouter = require('./routes/article');
@@ -38,7 +37,6 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'reactapp/build')));
 
-app.use('/', indexRouter);
 app.use('/admin', adminRouter);
 app.use('/event', eventRouter);
 app.use('/article', articleRouter);

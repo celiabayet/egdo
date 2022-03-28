@@ -85,9 +85,12 @@ export default function AdminButton(props) {
     };
 
     async function deleteArticle(title) {
-        await fetch(`/article/remove-article/${title}`, {
+        var res = await fetch(`/article/remove-article/${title}`, {
             method: 'DELETE'
         });
+        res = await res.json();
+        console.log(res);
+
         setArticleToDelete("");
         setSubmit(!submit);
     }

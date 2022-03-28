@@ -4,10 +4,12 @@ import { connect } from 'react-redux';
 
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import BackToTop from '../../components/BackToTop';
+
 // //import theme from "../../components/Theme";
 
 import Action from './Action';
-import Histoire from './Histoire';
+import History from './History';
 import Home from './Home';
 
 import '../../stylesheets/App.css'
@@ -42,7 +44,7 @@ function Discover(props) {
     return (
         <>
             {/* Navbar */}
-            < Navbar/>
+            < Navbar />
 
             {/* Home page */}
             < div  >
@@ -87,7 +89,7 @@ function Discover(props) {
                 <div className='opacity'>
                     <Container maxWidth="md" sx={{ paddingTop: "3rem" }}>
                         <Grid container py={10}>
-                            <Histoire />
+                            <History />
                         </Grid>
                     </Container>
                 </div>
