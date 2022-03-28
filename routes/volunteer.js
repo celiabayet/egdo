@@ -115,12 +115,11 @@ router.post('/add-volunteer', async function (req, res, next) {
             { $push: { users: { name: req.body.name, firstName: req.body.firstName, email: req.body.email } } }
         );
     }
+    
+  const data = await volunteerModel.find()
+ console.log(data[0].date)
 
-    // const data = await volunteerModel.find();
-    // console.log(data[0].date);
-    var result = "Merci pour votre inscription."
-
-    res.json(result)
+  res.json({ result })
 })
 
 module.exports = router
