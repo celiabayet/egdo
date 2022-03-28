@@ -35,7 +35,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'reactapp/build')));
+app.use(express.static(path.join(__dirname, '/reactapp/build')));
+
 
 app.use('/admin', adminRouter);
 app.use('/event', eventRouter);
