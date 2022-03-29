@@ -225,10 +225,8 @@ function Footer(props) {
                                         <Typography id="keep-mounted-modal-description" sx={{ mt: 3 }}>
                                             {errorMsg.length !== 0 && <TransitionAlerts type='error' msg={errorMsg[0]} />}
                                         </Typography>
-                                        <div>
-                                            <button className="button-input" onClick={closeAdminModal}>Accéder à l'espace admin</button>
-                                            <a style={{ cursor: "pointer", marginLeft: 25, marginRight: 25 }} onClick={() => { setAdminModalOpen(false); setEmail(''); setPassword(''); setErrorMsg('') }}>Annuler</a>
-                                        </div>
+                                        <button className="button-input" onClick={closeAdminModal}>Accéder à l'espace admin</button>
+                                        <a style={{ cursor: "pointer", marginTop: 25 }} onClick={() => { setAdminModalOpen(false); setEmail(''); setPassword(''); setErrorMsg('') }}>Annuler</a>
                                     </div>
                                 </Box>
                             </Modal>
