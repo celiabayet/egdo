@@ -70,7 +70,7 @@ router.post('/sign-in', async function (req, res, next) {
   if (req.body.email == ''
     || req.body.password == ''
   ) {
-    error.push('champs vides')
+    error.push('Certains champs sont vides !')
   }
 
   if (error.length == 0) {
@@ -85,11 +85,11 @@ router.post('/sign-in', async function (req, res, next) {
         await adminModel.updateOne({ token: admin.token }, { token: token })
       } else {
         result = false
-        error.push('mot de passe incorrect')
+        error.push('Le mot de passe est incorrect.')
       }
 
     } else {
-      error.push('email incorrect')
+      error.push('Cet email est inconnu.')
     }
   }
 

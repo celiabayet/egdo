@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 // Token à stocker dans le store une fois que l'admin s'est connecté
 import { connect } from 'react-redux';
 
-import { Grid, TextField, Modal, Box, FormControl, FormLabel, RadioGroup, Radio, FormControlLabel } from '@mui/material';
+import { Grid, TextField, Modal, Box, FormControl, FormLabel, RadioGroup, Radio, FormControlLabel, Typography } from '@mui/material';
 import { Facebook } from "@mui/icons-material";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
@@ -12,6 +12,8 @@ import L from 'leaflet';
 import "../stylesheets/Buttons.css"
 import "../stylesheets/Footer.css"
 import "../stylesheets/Modal.css"
+
+import TransitionAlerts from './Alert'
 
 function Footer(props) {
     // Icone EGDO sur la Map
@@ -34,6 +36,7 @@ function Footer(props) {
     const [password, setPassword] = useState("");
 
     // Gérer le login de l'administrateur
+    const [errorMsg, setErrorMsg] = useState([]);
     const [loginSuccessful, setLoginSuccessful] = useState(false);
     const [alreadyLoggedIn, setAlreadyLoggedIn] = useState(false);
 
@@ -56,15 +59,18 @@ function Footer(props) {
         });
         res = await res.json();
 
+        if (res.error.length !== 0) {
+            console.log(res.error);
+            setErrorMsg(res.error)
+        }
+
         if (res.result) {
-            console.log(res);
             props.onPopulate(res.token, res.admin.firstName);
             setLoginSuccessful(true);
+            setErrorMsg('');
+            setAdminModalOpen(false); setEmail(""); setPassword("");
         };
-        setAdminModalOpen(false); setEmail(""); setPassword("");
     };
-
-    console.log(props.admin.token);
 
     if (loginSuccessful || alreadyLoggedIn) {
         return (<Redirect to='/admin' />);
@@ -216,7 +222,13 @@ function Footer(props) {
                                             <TextField id="outlined-basic" label="Votre email" variant="outlined" className="input-field" onChange={(e) => setEmail(e.target.value)} value={email} />
                                             <TextField id="outlined-basic" label="Votre mot de passe" variant="outlined" className="input-field" type="password" onChange={(e) => setPassword(e.target.value)} value={password} />
                                         </div>
-                                        <button className="button-input" onClick={closeAdminModal}>Accéder à l'espace admin</button>
+                                        <Typography id="keep-mounted-modal-description" sx={{ mt: 3 }}>
+                                            {errorMsg.length !== 0 && <TransitionAlerts type='error' msg={errorMsg[0]} />}
+                                        </Typography>
+                                        <div>
+                                            <button className="button-input" onClick={closeAdminModal}>Accéder à l'espace admin</button>
+                                            <a style={{ cursor: "pointer", marginLeft: 25, marginRight: 25 }} onClick={() => { setAdminModalOpen(false); setEmail(''); setPassword(''); setErrorMsg('') }}>Annuler</a>
+                                        </div>
                                     </div>
                                 </Box>
                             </Modal>
